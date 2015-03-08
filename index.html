@@ -31,20 +31,23 @@
     <img src="img/larryPunchUp.png" id="larryPN">
     <img src="img/larryPunchDown.png" id="larryPS">
 
-    <div class="intro-menu dialog">
+    <div class="intro-menu">
       <strong>Defend the Lounge</strong>
       <p>It's another normal night&#8212;a gang of angry Ganeshes have invaded the John Jay 7 lounge. To fend them off, you'll need skill and strength. Use your arrow keys to fight and WASD to navigate. Good luck!</p>
+      <img src="img/controls.png">
     </div>
 
     <!-- Lets make a simple snake game -->
     <canvas id="canvas" width="2000" height="2000"></canvas>
 
+    <div id="giphyme"></div>
+
     <div class="esc-menu">
+
       <strong>Menu</strong>
       <p>Menu text goes here</p>
       <p>Press esc to return to game</p>
     </div>
-    <button class="button">Menu</button>
 
     <div class="gif"></div>
 
@@ -54,6 +57,11 @@
     <script type="text/javascript" src="JS/mainGame.js"></script>
     <script type="text/javascript" src="JS/UI.js"></script>
     <script type="text/javascript" src="JS/giphy.js"></script>
+
+    <audio controls autoplay loop>
+      <source src="music/rumblr-theme.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
 
   </body>
 

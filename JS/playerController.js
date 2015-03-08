@@ -100,6 +100,8 @@ $(document).keydown(function(e){
 
   if(key == "37") 
   {
+    e.preventDefault();
+
     larry.direction = "W"
     this.xBottom = this.xLocation + 40
     this.yBottom = this.xLocation + 90
@@ -108,6 +110,8 @@ $(document).keydown(function(e){
   } 
   if(key == "38")
   {
+    e.preventDefault();
+
     larry.direction = "N"
     this.xBottom = this.xLocation + 90
     this.yBottom = this.xLocation + 40  
@@ -116,6 +120,8 @@ $(document).keydown(function(e){
   }
   if(key == "39") 
   {
+    e.preventDefault();
+
     larry.direction = "E"
     this.xBottom = this.xLocation + 40    
     this.yBottom = this.xLocation + 90
@@ -124,6 +130,8 @@ $(document).keydown(function(e){
   }
   if(key == "40")
   {
+    e.preventDefault();
+
     larry.direction = "S"
     this.xBottom = this.xLocation + 90
     this.yBottom = this.xLocation + 40 
@@ -158,7 +166,10 @@ function moveLarry(larryObj)
     larryObj.yLocation -= dy*movePerFrame;
     larryObj.xBottom -= dx*movePerFrame
     larryObj.yBottom -= dy*movePerFrame
+    return
   }
+
+  scrollBy(dx*movePerFrame, dy*movePerFrame)
 
 }
 
@@ -195,11 +206,9 @@ function checkDeadGanesh(direction, larryObj)
     ganeshBottomX = ganeshArray[i].xBottom
     ganeshBottomY = ganeshArray[i].yBottom
 
-    console.log(xKillZone + " " + larryObj.xLocation + " " + larryObj.yLocation + " " + larryObj.yBottom + " " + ganeshX + " " + ganeshY)
-
     if(direction == "W")
     {
-        if( !((ganeshX > larryObj.xLocation) 
+        if( !((ganeshX > larryObj.xBottom) 
         ||  (ganeshBottomX < xKillZone )
         || (ganeshY > larryObj.yBottom)
         || (ganeshBottomY < larryObj.yLocation)))
@@ -207,8 +216,7 @@ function checkDeadGanesh(direction, larryObj)
         killGanesh(ganeshArray[i])
       }
     }
-
-    if(direction == "N")
+    else if(direction == "N")
     {
         if( !((ganeshX > larryObj.xBottom) 
         ||  (ganeshBottomX < larryObj.xLocation )
@@ -218,24 +226,22 @@ function checkDeadGanesh(direction, larryObj)
         killGanesh(ganeshArray[i])
       }
     }
-
-    if(direction == "E")
+    else if(direction == "E")
     {
         if( !((ganeshX > xKillZone) 
-        ||  (ganeshBottomX < larryObj.xBottom )
+        ||  (ganeshBottomX < larryObj.xLocation )
         || (ganeshY > larryObj.yBottom)
         || (ganeshBottomY < larryObj.yLocation)))
       {
         killGanesh(ganeshArray[i])
       }
     }
-
-    if(direction == "S")
+    else if(direction == "S")
     {
         if( !((ganeshX > larryObj.xBottom) 
         ||  (ganeshBottomX < larryObj.xLocation )
         || (ganeshY > yKillZone)
-        || (ganeshBottomY < larryObj.yBottom)))
+        || (ganeshBottomY < larryObj.yLocation)))
       {
         killGanesh(ganeshArray[i])
       }

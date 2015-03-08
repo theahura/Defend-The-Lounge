@@ -8,6 +8,6 @@ $(function() {
      buttons: {
         OK: function() {$(this).dialog("close");}
      },
-     dialogClass: "no-close",   
+     dialogClass: "no-close",
   });
 });

@@ -8,6 +8,8 @@
 //should be empty at end of round
 var ganeshArray = []
 
+var deadGaneshArray = []
+
 //Ganesh object
 //@param: x; int; the current x location
 //@param: y; int; the current y location
@@ -50,21 +52,27 @@ function paintGaneshes()
 //@param: ganeshObj; Ganesh; the ganesh that is being painted
 function paintGanesh(ganeshObj)
 {
-	if (ganeshObj.isDead)
+	if(ganeshObj.direction == "E")
+		ctx.drawImage(ganeshObj.imgE, ganeshObj.xLocation, ganeshObj.yLocation)
+	else if(ganeshObj.direction == "N")
+		ctx.drawImage(ganeshObj.imgN, ganeshObj.xLocation, ganeshObj.yLocation)
+	else if(ganeshObj.direction == "W")
+		ctx.drawImage(ganeshObj.imgW, ganeshObj.xLocation, ganeshObj.yLocation)
+	else 
+		ctx.drawImage(ganeshObj.imgS, ganeshObj.xLocation, ganeshObj.yLocation)
+}
+
+function paintDeadGaneshes()
+{
+	for (var i = 0; i < deadGaneshArray.length; i++)
 	{
-		ctx.drawImage(ganeshObj.imgDead, ganeshObj.xLocation, ganeshObj.yLocation)
+		paintDeadGanesh(deadGaneshArray[i])
 	}
-	else
-	{
-		if(ganeshObj.direction == "E")
-			ctx.drawImage(ganeshObj.imgE, ganeshObj.xLocation, ganeshObj.yLocation)
-		else if(ganeshObj.direction == "N")
-			ctx.drawImage(ganeshObj.imgN, ganeshObj.xLocation, ganeshObj.yLocation)
-		else if(ganeshObj.direction == "W")
-			ctx.drawImage(ganeshObj.imgW, ganeshObj.xLocation, ganeshObj.yLocation)
-		else 
-			ctx.drawImage(ganeshObj.imgS, ganeshObj.xLocation, ganeshObj.yLocation)
-	}
+}
+
+function paintDeadGanesh(ganeshObj)
+{
+	ctx.drawImage(ganeshObj.imgDead, ganeshObj.xLocation, ganeshObj.yLocation)
 }
 
 //create a new ganesh, add it to the hash, and use the location x/y to create it
@@ -86,7 +94,7 @@ function updateGoals(x, y)
 
 function updateGoal(ganeshObj, x, y)
 {
-	if(ganeshObj.reachedStartOne == false && ganeshObj.xLocation == ganeshObj.goalX && ganeshObj.yLocation == ganeshObj.goalY)
+	if(ganeshObj.reachedStartOne == false && ganeshObj.xLocation >= ganeshObj.goalX && ganeshObj.yLocation == ganeshObj.goalY)
 	{
 		ganeshObj.reachedStartOne = true
 		ganeshObj.goalX = 1740
@@ -148,15 +156,20 @@ function moveGanesh(ganeshObj)
 	{
 		 //do movement here
 		ganeshObj.xLocation += 15*(xMove)
-		ganeshObj.yLocation += 15*(yMove)
 		ganeshObj.xBottom += 15*(xMove)
-		ganeshObj.yBottom += 15*(yMove)
 
 		if(checkHitboxes(ganeshObj))
 		{
 		  ganeshObj.xLocation -= 15*(xMove)
-		  ganeshObj.yLocation -= 15*(yMove)
 		  ganeshObj.xBottom -= 15*(xMove)
+		}
+
+		ganeshObj.yLocation += 15*(yMove)
+		ganeshObj.yBottom += 15*(yMove)
+
+		if(checkHitboxes(ganeshObj))
+		{
+		  ganeshObj.yLocation -= 15*(yMove)
 		  ganeshObj.yBottom -= 15*(yMove)
 		}
 	}
@@ -167,6 +180,10 @@ function moveGanesh(ganeshObj)
 function killGanesh(ganeshObj)
 {
 	ganeshObj.isDead = true
+	ganeshArray.splice(ganeshArray.indexOf(ganeshObj), 1)
+	console.log(ganeshArray.length)
+	deadGaneshArray.push(ganeshObj)
+	console.log(deadGaneshArray.length)
 }
 
 //resets all the ganeshes at the end of the round

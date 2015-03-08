@@ -1,8 +1,11 @@
+var game_loop
+
 //image vars
 var img = document.getElementById("background");
 
 //framerate
-frame = 30
+var frame = 30
+var frameCount = 0
 
 //Canvas stuff
 var canvas = $("#canvas")[0];
@@ -17,7 +20,9 @@ var cw = 10;
 //Array containing all of the hitboxes
 var hitBoxes = []
 
-var toggle
+var round = 1
+var spawnCount = 1
+var toggle = false
 
 //topx and topy are the topleft corner of the box
 //bottomx and bottomy are the bottomleft corner of the box
@@ -64,7 +69,6 @@ function checkHitboxes(obj)
 
 function init()
 { 
-
   hitBox1 = new Hitbox(10, 210, 1625, 320)
   hitBox2 = new Hitbox(10, 210, 180, 640)
   hitBox3 = new Hitbox(10, 210, 80, 1740)
@@ -105,6 +109,12 @@ init();
 //Lets paint the snake now
 function paint()
 {
+  if (frameCount == frame*1000)
+  {
+    frameCount = 0
+  }
+
+  frameCount++
   //Background
   ctx.fillStyle = "white";
   ctx.fillRect(0, 0, w, h);
@@ -113,16 +123,29 @@ function paint()
 
   ctx.drawImage(background,0,0)
 
- 
+  if(ganeshArray.length <= 0)
+  {
+    roundEnd()
+  }
+
+  if(frameCount % 30 == 0 && spawnCount < round)
+  {
+    spawnCount++
+    spawnGanesh(-50, 50)
+  }
 
   //move ganeshes
   updateGoals(larry.xLocation, larry.yLocation)
   moveGaneshes()
+  paintDeadGaneshes()
   paintGaneshes()
 
   //move larry
   moveLarry(larry)
   paintLarry(larry)
+
+  //scroll if needed
+  scrollPage(larry.xLocation, larry.yLocation)
 }
 
 $(document).keydown(function(e){
@@ -139,8 +162,41 @@ $(document).keydown(function(e){
   }
 });
 
-setInterval(function() {
-  if (on) {
+function roundEnd()
+{
+  round++
+  frameCount = 0
+  spawnCount = 0
 
-  }
-})
+  q = "WINNER"; // search query
+  
+  request = new XMLHttpRequest;
+  request.open('GET', 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag='+q, true);
+  
+  request.onload = function() {
+    if (request.status >= 200 && request.status < 400){
+      data = JSON.parse(request.responseText).data.image_url;
+      console.log(data);
+      document.getElementById("giphyme").innerHTML = '<center><img src = "'+data+'"  title="GIF via Giphy"></center>';
+      $("#giphyme").find("img").show()
+    } else {
+      console.log('reached giphy, but API returned an error');
+     }
+  };
+ 
+  request.onerror = function() {
+    console.log('connection error');
+  };
+ 
+  request.send();
+}
+
+function scrollPage()
+{
+  window.scrollTo(larry.xLocation - window.innerWidth/2, larry.yLocation - window.innerHeight/2); 
+}
+
+$(window).on('beforeunload', function() {
+      $(window).scrollTop(0, 0);
+  });
+  
