@@ -166,7 +166,10 @@ function moveLarry(larryObj)
     larryObj.yLocation -= dy*movePerFrame;
     larryObj.xBottom -= dx*movePerFrame
     larryObj.yBottom -= dy*movePerFrame
+    return
   }
+
+  scrollBy(dx*movePerFrame, dy*movePerFrame)
 
 }
 
