@@ -28,6 +28,7 @@ function Ganesh(x, y)
 
 	this.reachedStartOne = false
 	this.reachedStartTwo = false
+	this.reachedStartThree = false
 
 	this.imgE = document.getElementById("ganeshE")
 	this.imgN = document.getElementById("ganeshN")
@@ -100,14 +101,19 @@ function updateGoal(ganeshObj, x, y)
 		ganeshObj.goalX = 1740
 		ganeshObj.goalY = 250
 	}
-	else if(ganeshObj.reachedStartTwo == false && ganeshObj.xLocation >= ganeshObj.goalX && ganeshObj.yLocation >= ganeshObj.goalY)
+	else if(ganeshObj.reachedStartOne && ganeshObj.reachedStartTwo == false && ganeshObj.xLocation >= ganeshObj.goalX && ganeshObj.yLocation >= ganeshObj.goalY)
 	{
 		ganeshObj.reachedStartTwo = true
+		ganeshObj.goalX = 240 + Math.random() * 1300;
+		ganeshObj.goalY = 400 + Math.random() * 1160;
+	}
+	else if(ganeshObj.reachedStartOne && ganeshObj.reachedStartTwo && ganeshObj.reachedStartThree == false && Math.pow(ganeshObj.xLocation - ganeshObj.goalX, 2) + Math.pow(ganeshObj.yLocation - ganeshObj.goalY, 2) < 900)
+	{
+		ganeshObj.reachedStartThree = true
 	}
 
-	if(!ganeshObj.reachedStartOne || !ganeshObj.reachedStartTwo)
+	if(!ganeshObj.reachedStartOne || !ganeshObj.reachedStartTwo || !ganeshObj.reachedStartThree)
 		return
-
 
 	ganeshObj.goalX = x
 	ganeshObj.goalY = y
@@ -126,6 +132,11 @@ function moveGaneshes()
 //@param: ganeshObj; Ganesh; the object that is getting updated on the move cycle
 function moveGanesh(ganeshObj)
 {
+	dt = 15 + 10*round/10
+
+	if (dt > 25)
+		dt = 25
+
 	if(ganeshObj.isDead)
 		return
 
@@ -161,22 +172,22 @@ function moveGanesh(ganeshObj)
 	if(totalDistance != 0)
 	{
 		 //do movement here
-		ganeshObj.xLocation += 15*(xMove)
-		ganeshObj.xBottom += 15*(xMove)
+		ganeshObj.xLocation += dt*(xMove)
+		ganeshObj.xBottom += dt*(xMove)
 
 		if(checkHitboxes(ganeshObj))
 		{
-		  ganeshObj.xLocation -= 15*(xMove)
-		  ganeshObj.xBottom -= 15*(xMove)
+		  ganeshObj.xLocation -= dt*(xMove)
+		  ganeshObj.xBottom -= dt*(xMove)
 		}
 
-		ganeshObj.yLocation += 15*(yMove)
-		ganeshObj.yBottom += 15*(yMove)
+		ganeshObj.yLocation += dt*(yMove)
+		ganeshObj.yBottom += dt*(yMove)
 
 		if(checkHitboxes(ganeshObj))
 		{
-		  ganeshObj.yLocation -= 15*(yMove)
-		  ganeshObj.yBottom -= 15*(yMove)
+		  ganeshObj.yLocation -= dt*(yMove)
+		  ganeshObj.yBottom -= dt*(yMove)
 		}
 	}
 }

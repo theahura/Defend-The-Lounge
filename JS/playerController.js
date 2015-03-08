@@ -5,7 +5,7 @@ var larryHeight = 50
 
 var dx = 0
 var dy = 0
-var movePerFrame = 25
+var movePerFrame = 27
 
 function Larry(x, y)
 {
@@ -209,7 +209,7 @@ function moveLarry(larryObj)
 
     if(larry.health > 100)
       larry.health = 100
-    
+
     $(".health").html(larry.health)
   }
 
