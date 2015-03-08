@@ -196,6 +196,8 @@ function moveGanesh(ganeshObj)
 //@param: ganeshObj; Ganesh; the object that is killed
 function killGanesh(ganeshObj)
 {
+	audio.play();
+
 	ganeshObj.isDead = true
 	ganeshArray.splice(ganeshArray.indexOf(ganeshObj), 1)
 	deadGaneshArray.push(ganeshObj)

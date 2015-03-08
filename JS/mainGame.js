@@ -1,3 +1,5 @@
+var audio = new Audio('punch.mp3');
+
 var game_loop
 
 //image vars
