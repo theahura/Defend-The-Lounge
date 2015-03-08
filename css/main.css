@@ -28,6 +28,15 @@ body {
   display: block;
   max-width: 100%;
 }
+.loser-menu {
+  background-color: white;
+  display: none;
+  padding: 1.5rem;
+  position: fixed;
+  top: 100px;
+  left: 200px;
+  z-index: 10;
+}
 img {
   display: none;
 }
