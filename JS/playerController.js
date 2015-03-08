@@ -100,6 +100,8 @@ $(document).keydown(function(e){
 
   if(key == "37") 
   {
+    e.preventDefault();
+
     larry.direction = "W"
     this.xBottom = this.xLocation + 40
     this.yBottom = this.xLocation + 90
@@ -108,6 +110,8 @@ $(document).keydown(function(e){
   } 
   if(key == "38")
   {
+    e.preventDefault();
+
     larry.direction = "N"
     this.xBottom = this.xLocation + 90
     this.yBottom = this.xLocation + 40  
@@ -116,6 +120,8 @@ $(document).keydown(function(e){
   }
   if(key == "39") 
   {
+    e.preventDefault();
+
     larry.direction = "E"
     this.xBottom = this.xLocation + 40    
     this.yBottom = this.xLocation + 90
@@ -124,6 +130,8 @@ $(document).keydown(function(e){
   }
   if(key == "40")
   {
+    e.preventDefault();
+
     larry.direction = "S"
     this.xBottom = this.xLocation + 90
     this.yBottom = this.xLocation + 40 

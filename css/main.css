@@ -21,3 +21,8 @@ body {
 .intro-menu img {
   max-width: 100%;
 }
+
+img
+{
+  display: none
+}
