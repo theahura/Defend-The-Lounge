@@ -256,10 +256,10 @@ function gameOver()
     var key = e.which;
     // press escape to menu
     if(key == "13") {
+      round = 1;
+      ganeshCount = 0;
       init();
       location.reload();
-      round = 0;
-      ganeshCount = 0;
     }
   });
 
