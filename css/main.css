@@ -51,6 +51,11 @@ img {
 .flexslider ul, ol {
   list-style-type: none;
 }
+.flexslider li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 .flex-viewport {
   width: 100%;
 }
