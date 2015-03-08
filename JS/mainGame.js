@@ -129,6 +129,5 @@ $(document).keydown(function(e){
   if(key == "27") {
     clearInterval(game_loop);
     $('.esc-menu').toggle(); // display menu on esc
-    console.log("keypress called")
   }
 });
