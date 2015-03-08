@@ -86,8 +86,8 @@ function updateGoal(ganeshObj, x, y)
 	if(ganeshObj.reachedStartOne == false && ganeshObj.xLocation == ganeshObj.goalX && ganeshObj.yLocation == ganeshObj.goalY)
 	{
 		ganeshObj.reachedStartOne = true
-		ganeshObj.goalX = 1700
-		ganeshObj.goalY = 200
+		ganeshObj.goalX = 1740
+		ganeshObj.goalY = 250
 	}
 	else if(ganeshObj.reachedStartTwo == false && ganeshObj.xLocation == ganeshObj.goalX && ganeshObj.yLocation == ganeshObj.goalY)
 	{
@@ -96,6 +96,8 @@ function updateGoal(ganeshObj, x, y)
 
 	if(!ganeshObj.reachedStartOne || !ganeshObj.reachedStartTwo)
 		return
+
+	console.log("HELLO")
 
 	ganeshObj.goalX = x
 	ganeshObj.goalY = y
