@@ -30,6 +30,8 @@ function Larry(x, y)
   this.imgPS = document.getElementById("larryPS")
 
   this.direction = "E"
+
+  this.health = 100
 }
 
 //paints a specific ganesh
@@ -174,7 +176,7 @@ $(document).keyup(function(e){
   if(key == "40") down = false;
   if(key == "39") right = false;
   if (key == "38") up = false;
-  if (key == "38") left = false;
+  if (key == "37") left = false;
 })
 
 
