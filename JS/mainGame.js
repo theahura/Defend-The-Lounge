@@ -1,4 +1,4 @@
-var audio = new Audio('punch.mp3');
+var audio = new Audio('music/punch.mp3');
 
 var game_loop
 
