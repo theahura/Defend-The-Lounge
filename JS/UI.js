@@ -10,3 +10,12 @@
 //   });
 // });
 
+$(function() {
+  $( ".intro-menu" ).dialog({
+     autoOpen: true, 
+     hide: "puff",
+     show : "slide",
+     height: "auto",
+     modal: true,    
+  });
+});
