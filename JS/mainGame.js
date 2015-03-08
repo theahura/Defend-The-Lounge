@@ -34,7 +34,7 @@ function Hitbox(topX, topY, bottomX, bottomY)
       || (obj.xBottom >= this.topX && obj.xBottom <= this.bottomX && obj.yLocation >= this.topY && obj.yLocation <= this.bottomY)
       || (obj.xBottom >= this.topX && obj.xBottom <= this.bottomX && obj.yBottom >= this.topY && obj.yBottom <= this.bottomY) )
     {
-      console.log(obj.xLocation + " " + obj.yLocation + " " + obj.xBottom + " " + obj.yBottom)
+      // console.log(obj.xLocation + " " + obj.yLocation + " " + obj.xBottom + " " + obj.yBottom)
       return true
     }
     return false
@@ -53,7 +53,7 @@ function checkHitboxes(obj)
   {
     if(hitBoxes[i].isTouching(obj))
     {
-      console.log(i)
+      // console.log(i)
       return true
     }
   }
