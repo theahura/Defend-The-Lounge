@@ -70,6 +70,7 @@ function checkHitboxes(obj)
 
 function init()
 { 
+
   hitBox1 = new Hitbox(10, 210, 1625, 320)
   hitBox2 = new Hitbox(10, 210, 180, 640)
   hitBox3 = new Hitbox(10, 210, 80, 1740)
@@ -100,6 +101,7 @@ function init()
 
   spawnGanesh(50, 50)
   spawnLarry(1000, 1000)
+  $(".health").html(larry.health)
 
   if(typeof game_loop != "undefined") clearInterval(game_loop);
   game_loop = setInterval(paint, frame);
@@ -143,10 +145,11 @@ function paint()
   moveLarry(larry)
   paintLarry(larry)
 
-  checkGameOver()
-
   //scroll if needed
   scrollPage(larry.xLocation, larry.yLocation)
+
+  checkGameOver()
+
 }
 
 $(document).keydown(function(e){
@@ -181,7 +184,7 @@ function roundEnd()
 {
   round++
   frameCount = 0
-  spawnCount = 0
+  spawnCount = round*-1
 
   q = "victory"; // search query
   
@@ -228,3 +231,11 @@ $('.lets-go').click(function() {
   $('.cover').fadeOut();
   init();
 });
+
+function gameOver()
+{
+  $(".health").html("0")
+
+  clearInterval(game_loop)
+  alert("Game Over")
+}

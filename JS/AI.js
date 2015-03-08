@@ -181,9 +181,7 @@ function killGanesh(ganeshObj)
 {
 	ganeshObj.isDead = true
 	ganeshArray.splice(ganeshArray.indexOf(ganeshObj), 1)
-	console.log(ganeshArray.length)
 	deadGaneshArray.push(ganeshObj)
-	console.log(deadGaneshArray.length)
 
 	ganeshCount++
 }
@@ -203,6 +201,7 @@ function resetGaneshes()
 function checkGameOver()
 {
 	var ganeshCount = 0
+	console.log("HELLO")
 
 	for(var i = 0; i < ganeshArray.length; i++)
 	{
@@ -211,13 +210,15 @@ function checkGameOver()
         || (ganeshArray[i].yLocation > larry.yBottom)
         || (ganeshArray[i].yBottom < larry.yLocation)))
 		{
-			ganeshCount++
+			larry.health--
+			$(".health").html(larry.health)
 		}
 
-		if (ganeshCount >= 3)
+		if (larry.health <= 0)
 		{
-			clearInterval(game_loop)
-			alert("Game Over")
+
+			gameOver()
+			return
 		}
 	}
 }
