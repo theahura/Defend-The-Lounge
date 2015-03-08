@@ -248,7 +248,7 @@ function gameOver()
     // press escape to menu
     if(key == "13") {
       init();
-      $('.loser-menu').fadeOut();
+      location.reload();
     }
   });
 
