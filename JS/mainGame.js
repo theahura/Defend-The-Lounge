@@ -105,8 +105,6 @@ function init()
   game_loop = setInterval(paint, frame);
 }
 
-init();
-
 //Lets paint the snake now
 function paint()
 {
@@ -210,11 +208,6 @@ function roundEnd()
   request.send();
 }
 
-// Fade out intro screen
-$('.cover').click(function() {
-  $('.cover').fadeOut();
-});
-
 function scrollPage()
 {
   window.scrollTo(larry.xLocation - window.innerWidth/2, larry.yLocation - window.innerHeight/2); 
@@ -222,5 +215,16 @@ function scrollPage()
 
 $(window).on('beforeunload', function() {
       $(window).scrollTop(0, 0);
+});
+
+$(window).load(function() {
+  $('.flexslider').flexslider({
+    animation: "slide"
   });
-  
+});
+
+// Fade out intro screen
+$('.lets-go').click(function() {
+  $('.cover').fadeOut();
+  init();
+});

@@ -13,7 +13,7 @@ body {
   background-color: white;
   margin: 4rem auto;
   padding: 1.5rem;
-  width: 20rem;
+  width: 30rem;
 }
 .esc-menu {
   background-color: white;
@@ -46,4 +46,26 @@ img {
 {
     display: table;
     margin: 0 auto;
+}
+
+.flexslider ul, ol {
+  list-style-type: none;
+}
+.flex-viewport {
+  width: 100%;
+}
+.flex-control-nav, .flex-control-paging {
+  display: none;
+}
+.flex-direction-nav {
+  display: block;
+}
+.flex-nav-prev, .flex-nav-next {
+  max-width: 50%;
+}
+.flex-nav-prev {
+  float: left;
+}
+.flex-nav-next {
+  float: right;
 }
