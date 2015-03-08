@@ -69,8 +69,6 @@ function checkHitboxes(obj)
 
 function init()
 { 
-  window.scrollTo(1000, 1000)
-
   hitBox1 = new Hitbox(10, 210, 1625, 320)
   hitBox2 = new Hitbox(10, 210, 180, 640)
   hitBox3 = new Hitbox(10, 210, 80, 1740)
@@ -192,3 +190,13 @@ function roundEnd()
  
   request.send();
 }
+
+function scrollPage()
+{
+  window.scrollTo(larry.xLocation - window.innerWidth/2, larry.yLocation - window.innerHeight/2); 
+}
+
+$(window).on('beforeunload', function() {
+      $(window).scrollTop(0, 0);
+  });
+  
