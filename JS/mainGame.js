@@ -1,7 +1,7 @@
 var game_loop
 
 //image vars
-var img = document.getElementById("background");
+var background = document.getElementById("background");
 
 //framerate
 var frame = 30
@@ -145,6 +145,8 @@ function paint()
   moveLarry(larry)
   paintLarry(larry)
 
+  paintFood()
+
   //scroll if needed
   scrollPage(larry.xLocation, larry.yLocation)
 
@@ -189,6 +191,8 @@ function roundEnd()
   round++
   frameCount = 0
   spawnCount = round*-1
+
+  spawnFood()
 
   q = "victory"; // search query
   

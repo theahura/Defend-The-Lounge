@@ -5,7 +5,7 @@ var larryHeight = 50
 
 var dx = 0
 var dy = 0
-var movePerFrame = 25
+var movePerFrame = 27
 
 function Larry(x, y)
 {
@@ -29,6 +29,8 @@ function Larry(x, y)
   this.imgPW = document.getElementById("larryPW")
   this.imgPS = document.getElementById("larryPS")
 
+  this.imgDead = document.getElementById("larryDead")
+
   this.direction = "E"
 
   this.health = 100
@@ -40,7 +42,7 @@ function paintLarry(larryObj)
 {
   if (larryObj.isDead)
   {
-    
+    ctx.drawImage(larryObj.imgDead, larryObj.xLocation, larryObj.yLocation)
   }
   else
   {
@@ -198,6 +200,17 @@ function moveLarry(larryObj)
     larryObj.xBottom -= dx*movePerFrame
     larryObj.yBottom -= dy*movePerFrame
     return
+  }
+
+  if(food && larryObj.xLocation <= food.xBottom && larryObj.yLocation <= food.yBottom)
+  {
+    larry.health += food.health
+    removeFood()
+
+    if(larry.health > 100)
+      larry.health = 100
+
+    $(".health").html(larry.health)
   }
 
   scrollBy(dx*movePerFrame, dy*movePerFrame)
