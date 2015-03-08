@@ -243,11 +243,13 @@ function gameOver()
   if (round-1 != 1) {
     $(".isPlural").html("s");
   }
-  function(e){
+  $(document).keydown(function(e){
     var key = e.which;
     // press escape to menu
     if(key == "13") {
       init();
-  }
+      $('.loser-menu').fadeOut();
+    }
+  });
 
 }
