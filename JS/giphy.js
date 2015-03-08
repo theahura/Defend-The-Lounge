@@ -14,7 +14,7 @@
 // });
 
 // $.getJSON('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=loser', function(data) {
-//   var template = "<img src='{{data.fixed_width_downsampled_url}}'>"
+//   var template}); = "<img src='{{data.fixed_width_downsampled_url}}'>"
 // })
 
 // function() {
@@ -36,4 +36,4 @@
     
     $('.gif').append(imgList);
   });
-// });
+// 
