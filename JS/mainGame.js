@@ -237,5 +237,17 @@ function gameOver()
   $(".health").html("0")
 
   clearInterval(game_loop)
-  alert("Game Over")
+  
+  $('.loser-menu').fadeIn();
+  $(".roundnumber").html(round-1)
+  if (round-1 != 1) {
+    $(".isPlural").html("s");
+  }
+  function(e){
+    var key = e.which;
+    // press escape to menu
+    if(key == "13") {
+      init();
+  }
+
 }
