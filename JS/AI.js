@@ -8,9 +8,6 @@
 //should be empty at end of round
 var ganeshArray = []
 
-var ganeshWidth = 40
-var ganeshHeight = 70
-
 //Ganesh object
 //@param: x; int; the current x location
 //@param: y; int; the current y location
@@ -24,7 +21,8 @@ function Ganesh(x, y)
 
 	this.isDead = false
 
-	this.reachedStart = false
+	this.reachedStartOne = false
+	this.reachedStartTwo = false
 
 	this.imgE = document.getElementById("ganeshE")
 	this.imgN = document.getElementById("ganeshN")
@@ -51,9 +49,7 @@ function paintGanesh(ganeshObj)
 {
 	if (ganeshObj.isDead)
 	{
-		ctx.fillStyle="#FF0000"
-		ctx.fillRect(ganeshObj.xLocation, ganeshObj.yLocation, ganeshWidth, ganeshHeight)
-		ctx.fillStyle = "white"
+		
 	}
 	else
 	{
@@ -79,18 +75,28 @@ function spawnGanesh(x, y)
 
 function updateGoals(x, y)
 {
-	if(!this.reachedStart)
-		return
-
 	for (var i = 0; i < ganeshArray.length; i++)
 	{
 		updateGoal(ganeshArray[i], x, y)
-		changeSpeed(ganeshObj)
 	}
 }
 
 function updateGoal(ganeshObj, x, y)
 {
+	if(ganeshObj.reachedStartOne == false && ganeshObj.xLocation == ganeshObj.goalX && ganeshObj.yLocation == ganeshObj.goalY)
+	{
+		ganeshObj.reachedStartOne = true
+		ganeshObj.goalX = 1700
+		ganeshObj.goalY = 200
+	}
+	else if(ganeshObj.reachedStartTwo == false && ganeshObj.xLocation == ganeshObj.goalX && ganeshObj.yLocation == ganeshObj.goalY)
+	{
+		ganeshObj.reachedStartTwo = true
+	}
+
+	if(!ganeshObj.reachedStartOne || !ganeshObj.reachedStartTwo)
+		return
+
 	ganeshObj.goalX = x
 	ganeshObj.goalY = y
 }
@@ -115,11 +121,29 @@ function moveGanesh(ganeshObj)
 	var yDistance = ganeshObj.goalY - ganeshObj.yLocation
 	var totalDistance = Math.sqrt(Math.pow(xDistance,2) + Math.pow(yDistance,2))
 
+	var xMove = xDistance/totalDistance
+	var yMove = yDistance/totalDistance
+
+	if(Math.abs(xMove) > Math.abs(yMove))
+	{
+		if(xMove > 0)
+			ganeshObj.direction = "E"
+		else if (xMove < 0)
+			ganeshObj.direction = "W"
+	}
+	else if(Math.abs(xMove) < Math.abs(yMove))
+	{
+		if(yMove > 0)
+			ganeshObj.direction = "S"
+		else if (yMove < 0)
+			ganeshObj.direction = "N"	
+	}
+	
 	//do movement here
 	if(totalDistance != 0)
 	{
-		ganeshObj.xLocation += 25*(xDistance/totalDistance)
-		ganeshObj.yLocation += 25*(yDistance/totalDistance)
+		ganeshObj.xLocation += 15*(xMove)
+		ganeshObj.yLocation += 15*(yMove)
 	}
 }
 

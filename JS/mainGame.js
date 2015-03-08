@@ -26,20 +26,24 @@ function Hitbox(topX, topY, bottomX, bottomY)
   this.bottomX = bottomX
   this.bottomY = bottomY
 
-  this.isTouching(x, y)
+  //assumes obj has: xLocation, yLocation, xBottom, yBottom
+  this.isTouching(obj)
   {
-    if(x > topX && x < bottomX && y > topY && y < bottomY)
+    if( (obj.xLocation > this.topX && obj.xLocation < this.bottomX && obj.yLocation > this.topY && obj.yLocation < this.bottomY) 
+      || (obj.xLocation > this.topX && obj.xLocation < this.bottomX && obj.yBottom > this.topY && obj.yBottom < this.bottomY)
+      || (obj.xBottom > this.topX && obj.xBottom < this.bottomX && obj.yLocation > this.topY && obj.yLocation < this.bottomY)
+      || (obj.xBottom > this.topX && obj.xBottom < this.bottomX && obj.yBottom > this.topY && obj.yBottom < this.bottomY) )
       return true
     return false
   }
 }
 
 //goes through and checks all hitboxes for x and y, returns true if something is hit
-function checkHitboxes(x, y)
+function checkHitboxes(obj)
 {
   for(var i = 0; i < hitBoxes.length; i++)
   {
-    if(hitBoxes[i].isTouching(x,y))
+    if(hitBoxes[i].isTouching(obj))
       return true
     return false
   }
@@ -48,7 +52,7 @@ function checkHitboxes(x, y)
 function init()
 { 
   spawnGanesh(50, 50)
-  spawnLarry(200, 200)
+  spawnLarry(1000, 1000)
 
   if(typeof game_loop != "undefined") clearInterval(game_loop);
   game_loop = setInterval(paint, frame);
@@ -59,22 +63,22 @@ init();
 //Lets paint the snake now
 function paint()
 {
-	//Background
-	ctx.fillStyle = "white";
-	ctx.fillRect(0, 0, w, h);
-	ctx.strokeStyle = "black";
-	ctx.strokeRect(0, 0, w, h);
+  //Background
+  ctx.fillStyle = "white";
+  ctx.fillRect(0, 0, w, h);
+  ctx.strokeStyle = "black";
+  ctx.strokeRect(0, 0, w, h);
 
-  ctx.drawImage(background,0,0);
+    ctx.drawImage(background,0,0);
 
-	//move ganeshes
-	updateGoals(larry.xLocation, larry.yLocation)
-	moveGaneshes()
-	paintGaneshes()
+  //move ganeshes
+  updateGoals(larry.xLocation, larry.yLocation)
+  moveGaneshes()
+  paintGaneshes()
 
-	//move larry
-	moveLarry(larry)
-	paintLarry(larry)
+  //move larry
+  moveLarry(larry)
+  paintLarry(larry)
 }
 
 $(document).keydown(function(e){

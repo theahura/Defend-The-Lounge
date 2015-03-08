@@ -1,7 +1,7 @@
 var larry
 
-var larryWidth = 40
-var larryHeight = 70
+var larryWidth = 90
+var larryHeight = 50
 
 var dx = 0
 var dy = 0
@@ -11,6 +11,9 @@ function Larry(x, y)
 {
   this.xLocation = x
   this.yLocation = y
+
+  this.xBottom = this.xLocation + 40
+  this.yBottom = this.yLocation + 90
 
   this.isDead = false
 
@@ -64,11 +67,36 @@ $(document).keyup(function(e){
   if(key == "40") dy = 0;
 })
 
-//iterates through all ganeshes to update their location
 function moveLarry(larryObj)
 {
   if(larryObj.isDead)
     return
+
+  //rotations
+  if(dx > 0)
+  {
+    larryObj.direction = "E"
+    this.xBottom = this.xLocation + 40    
+    this.yBottom = this.xLocation + 90    
+  }
+  else if (dx < 0)
+  {
+    larryObj.direction = "W"
+    this.xBottom = this.xLocation + 40
+    this.yBottom = this.xLocation + 90    
+  }
+  else if (dy > 0)
+  {
+    larryObj.direction = "S"
+    this.xBottom = this.xLocation + 90
+    this.yBottom = this.xLocation + 40  
+  }
+  else if (dy < 0)
+  {
+    larryObj.direction = "N"
+    this.xBottom = this.xLocation + 90
+    this.yBottom = this.xLocation + 40  
+  }
 
   //do movement here
   larryObj.xLocation += dx*movePerFrame;
