@@ -201,6 +201,11 @@ function roundEnd()
   request.send();
 }
 
+// Fade out intro screen
+$('.cover').click(function() {
+  $('.cover').fadeOut();
+});
+
 function scrollPage()
 {
   window.scrollTo(larry.xLocation - window.innerWidth/2, larry.yLocation - window.innerHeight/2); 
