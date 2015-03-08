@@ -101,4 +101,11 @@ function moveLarry(larryObj)
   //do movement here
   larryObj.xLocation += dx*movePerFrame;
   larryObj.yLocation += dy*movePerFrame;
+
+  if(checkHitboxes(larryObj))
+  {
+    larryObj.xLocation -= dx*movePerFrame;
+    larryObj.yLocation -= dy*movePerFrame;
+  }
+
 }

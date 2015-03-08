@@ -142,8 +142,15 @@ function moveGanesh(ganeshObj)
 	//do movement here
 	if(totalDistance != 0)
 	{
+		 //do movement here
 		ganeshObj.xLocation += 15*(xMove)
 		ganeshObj.yLocation += 15*(yMove)
+
+		if(checkHitboxes(ganeshObj))
+		{
+		  ganeshObj.xLocation -= 15*(xMove)
+		  ganeshObj.yLocation -= 15*(yMove)
+		}
 	}
 }
 

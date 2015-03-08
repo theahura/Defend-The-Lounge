@@ -27,13 +27,15 @@ function Hitbox(topX, topY, bottomX, bottomY)
   this.bottomY = bottomY
 
   //assumes obj has: xLocation, yLocation, xBottom, yBottom
-  this.isTouching(obj)
+  this.isTouching= function(obj)
   {
     if( (obj.xLocation > this.topX && obj.xLocation < this.bottomX && obj.yLocation > this.topY && obj.yLocation < this.bottomY) 
       || (obj.xLocation > this.topX && obj.xLocation < this.bottomX && obj.yBottom > this.topY && obj.yBottom < this.bottomY)
       || (obj.xBottom > this.topX && obj.xBottom < this.bottomX && obj.yLocation > this.topY && obj.yLocation < this.bottomY)
       || (obj.xBottom > this.topX && obj.xBottom < this.bottomX && obj.yBottom > this.topY && obj.yBottom < this.bottomY) )
+    {
       return true
+    }
     return false
   }
 }
@@ -51,6 +53,12 @@ function checkHitboxes(obj)
 
 function init()
 { 
+
+  hitBoxWall = new Hitbox(0, 210, 700, 245)
+ 
+
+  hitBoxes.push(hitBoxWall)
+
   spawnGanesh(50, 50)
   spawnLarry(1000, 1000)
 
@@ -69,7 +77,9 @@ function paint()
   ctx.strokeStyle = "black";
   ctx.strokeRect(0, 0, w, h);
 
-    ctx.drawImage(background,0,0);
+  ctx.drawImage(background,0,0);
+  ctx.fillStyle = "green"
+  ctx.fillRect(0, 210, 700, 35)
 
   //move ganeshes
   updateGoals(larry.xLocation, larry.yLocation)
