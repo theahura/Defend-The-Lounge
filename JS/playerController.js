@@ -180,12 +180,12 @@ function checkDeadGanesh(direction, larryObj)
 
   if(direction == "E")
   {
-    xKillZone += 50
+    xKillZone = larryObj.xBottom + 50
   }
 
   if(direction == "S")
   {
-    yKillZone += 50
+    yKillZone = larryObj.yBottom + 50
   }
 
   for(var i = 0; i < ganeshArray.length; i++)
@@ -193,16 +193,16 @@ function checkDeadGanesh(direction, larryObj)
     ganeshX = ganeshArray[i].xLocation
     ganeshY = ganeshArray[i].yLocation
     ganeshBottomX = ganeshArray[i].xBottom
-    ganeshBottomXY = ganeshArray[i].yBottom
+    ganeshBottomY = ganeshArray[i].yBottom
 
     console.log(xKillZone + " " + larryObj.xLocation + " " + larryObj.yLocation + " " + larryObj.yBottom + " " + ganeshX + " " + ganeshY)
 
     if(direction == "W")
     {
-        if( (ganeshX >= xKillZone && ganeshX <= larryObj.xLocation && ganeshY >= larryObj.yLocation && ganeshY <= larryObj.yBottom) 
-        || (ganeshX >= xKillZone && ganeshX <= larryObj.xLocation && ganeshY >= larryObj.yLocation && ganeshY <= larryObj.yBottom)
-        || (ganeshX >= xKillZone && ganeshX <= larryObj.xLocation && ganeshY >= larryObj.yLocation && ganeshY <= larryObj.yBottom)
-        || (ganeshX >= xKillZone && ganeshX <= larryObj.xLocation && ganeshY >= larryObj.yLocation && ganeshY <= larryObj.yBottom) )
+        if( !((ganeshX > larryObj.xLocation) 
+        ||  (ganeshBottomX < xKillZone )
+        || (ganeshY > larryObj.yBottom)
+        || (ganeshBottomY < larryObj.yLocation)))
       {
         killGanesh(ganeshArray[i])
       }
@@ -210,10 +210,10 @@ function checkDeadGanesh(direction, larryObj)
 
     if(direction == "N")
     {
-        if( (ganeshX >= larryObj.xLocation && ganeshX <= larryObj.xBottom && ganeshY >= yKillZone && ganeshY <= larryObj.yLocation) 
-        || (ganeshX >= larryObj.xLocation && ganeshX <= larryObj.xBottom && ganeshY >= yKillZone && ganeshY <= larryObj.yLocation)
-        || (ganeshX >= larryObj.xLocation && ganeshX <= larryObj.xBottom && ganeshY >= yKillZone && ganeshY <= larryObj.yLocation)
-        || (ganeshX >= larryObj.xLocation && ganeshX <= larryObj.xBottom && ganeshY >= yKillZone && ganeshY <= larryObj.yLocation) )
+        if( !((ganeshX > larryObj.xBottom) 
+        ||  (ganeshBottomX < larryObj.xLocation )
+        || (ganeshY > larryObj.yBottom)
+        || (ganeshBottomY < yKillZone)))
       {
         killGanesh(ganeshArray[i])
       }
@@ -221,10 +221,10 @@ function checkDeadGanesh(direction, larryObj)
 
     if(direction == "E")
     {
-        if( (ganeshX >= larryObj.xLocation && ganeshX <= xKillZone && ganeshY >= larryObj.yLocation && ganeshY <= larryObj.yBottom) 
-        || (ganeshX >= larryObj.xLocation && ganeshX <= xKillZone && ganeshY >= larryObj.yLocation && ganeshY <= larryObj.yBottom)
-        || (ganeshX >= larryObj.xLocation && ganeshX <= xKillZone && ganeshY >= larryObj.yLocation && ganeshY <= larryObj.yBottom)
-        || (ganeshX >= larryObj.xLocation && ganeshX <= xKillZone && ganeshY >= larryObj.yLocation && ganeshY <= larryObj.yBottom) )
+        if( !((ganeshX > xKillZone) 
+        ||  (ganeshBottomX < larryObj.xBottom )
+        || (ganeshY > larryObj.yBottom)
+        || (ganeshBottomY < larryObj.yLocation)))
       {
         killGanesh(ganeshArray[i])
       }
@@ -232,10 +232,10 @@ function checkDeadGanesh(direction, larryObj)
 
     if(direction == "S")
     {
-        if( (ganeshX >= larryObj.xLocation && ganeshX <= larryObj.xBottom && ganeshY >= larryObj.yLocation && ganeshY <= yKillZone) 
-        || (ganeshX >= larryObj.xLocation && ganeshX <= larryObj.xBottom && ganeshY >= larryObj.yLocation && ganeshY <= yKillZone)
-        || (ganeshX >= larryObj.xLocation && ganeshX <= larryObj.xBottom && ganeshY >= larryObj.yLocation && ganeshY <= yKillZone)
-        || (ganeshX >= larryObj.xLocation && ganeshX <= larryObj.xBottom && ganeshY >= larryObj.yLocation && ganeshY <= yKillZone) )
+        if( !((ganeshX > larryObj.xBottom) 
+        ||  (ganeshBottomX < larryObj.xLocation )
+        || (ganeshY > yKillZone)
+        || (ganeshBottomY < larryObj.yBottom)))
       {
         killGanesh(ganeshArray[i])
       }
