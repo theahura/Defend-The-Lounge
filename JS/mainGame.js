@@ -104,8 +104,6 @@ function init()
   game_loop = setInterval(paint, frame);
 }
 
-init();
-
 //Lets paint the snake now
 function paint()
 {
@@ -204,4 +202,10 @@ $(window).load(function() {
   $('.flexslider').flexslider({
     animation: "slide"
   });
+});
+
+// Fade out intro screen
+$('.lets-go').click(function() {
+  $('.cover').fadeOut();
+  init();
 });

@@ -44,6 +44,21 @@ img {
 .flexslider ul, ol {
   list-style-type: none;
 }
+.flex-viewport {
+  width: 100%;
+}
 .flex-control-nav, .flex-control-paging {
   display: none;
+}
+.flex-direction-nav {
+  display: block;
+}
+.flex-nav-prev, .flex-nav-next {
+  max-width: 50%;
+}
+.flex-nav-prev {
+  float: left;
+}
+.flex-nav-next {
+  float: right;
 }
