@@ -23,6 +23,7 @@ body {
   top: 100px;
   left: 200px;
   z-index: 10;
+  width: 16rem;
 }
 .intro-menu img {
   display: block;
@@ -36,6 +37,10 @@ body {
   top: 100px;
   left: 200px;
   z-index: 10;
+  width: 16rem;
+}
+#giphyme img {
+  max-width: 100%;
 }
 img {
   display: none;
