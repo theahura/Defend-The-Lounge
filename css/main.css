@@ -2,9 +2,9 @@ body {
   font-family: 'Cousine', monospace;
   font-size: 16px;
 }
-.esc-menu {
+.dialog {
   background-color: white;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 img {
   display: none;

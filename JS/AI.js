@@ -16,6 +16,9 @@ function Ganesh(x, y)
 	this.xLocation = x
 	this.yLocation = y
 
+	this.xBottom = this.xLocation
+	this.yBottom = this.yLocation
+
 	this.goalX = 1700
 	this.goalY = 50
 
@@ -49,7 +52,7 @@ function paintGanesh(ganeshObj)
 {
 	if (ganeshObj.isDead)
 	{
-		
+		ctx.drawImage(ganeshObj.imgDead, ganeshObj.xLocation, ganeshObj.yLocation)
 	}
 	else
 	{
@@ -86,16 +89,17 @@ function updateGoal(ganeshObj, x, y)
 	if(ganeshObj.reachedStartOne == false && ganeshObj.xLocation == ganeshObj.goalX && ganeshObj.yLocation == ganeshObj.goalY)
 	{
 		ganeshObj.reachedStartOne = true
-		ganeshObj.goalX = 1700
-		ganeshObj.goalY = 200
+		ganeshObj.goalX = 1740
+		ganeshObj.goalY = 250
 	}
-	else if(ganeshObj.reachedStartTwo == false && ganeshObj.xLocation == ganeshObj.goalX && ganeshObj.yLocation == ganeshObj.goalY)
+	else if(ganeshObj.reachedStartTwo == false && ganeshObj.xLocation >= ganeshObj.goalX && ganeshObj.yLocation >= ganeshObj.goalY)
 	{
 		ganeshObj.reachedStartTwo = true
 	}
 
 	if(!ganeshObj.reachedStartOne || !ganeshObj.reachedStartTwo)
 		return
+
 
 	ganeshObj.goalX = x
 	ganeshObj.goalY = y
@@ -142,8 +146,19 @@ function moveGanesh(ganeshObj)
 	//do movement here
 	if(totalDistance != 0)
 	{
+		 //do movement here
 		ganeshObj.xLocation += 15*(xMove)
 		ganeshObj.yLocation += 15*(yMove)
+		ganeshObj.xBottom += 15*(xMove)
+		ganeshObj.yBottom += 15*(yMove)
+
+		if(checkHitboxes(ganeshObj))
+		{
+		  ganeshObj.xLocation -= 15*(xMove)
+		  ganeshObj.yLocation -= 15*(yMove)
+		  ganeshObj.xBottom -= 15*(xMove)
+		  ganeshObj.yBottom -= 15*(yMove)
+		}
 	}
 }
 
