@@ -184,6 +184,8 @@ function killGanesh(ganeshObj)
 	console.log(ganeshArray.length)
 	deadGaneshArray.push(ganeshObj)
 	console.log(deadGaneshArray.length)
+
+	ganeshCount++
 }
 
 //resets all the ganeshes at the end of the round

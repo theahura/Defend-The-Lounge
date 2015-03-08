@@ -21,6 +21,7 @@ var cw = 10;
 var hitBoxes = []
 
 var round = 1
+var ganeshCount = 0
 var spawnCount = 1
 var toggle = false
 
@@ -152,15 +153,22 @@ $(document).keydown(function(e){
   var key = e.which;
   // press escape to menu
   if(key == "27") {
-    toggle = !toggle;
-    $('.esc-menu').toggle(); // display menu on esc
-    if (toggle == true) {
-      clearInterval(game_loop)
-    } else if (toggle == false)  {
-      game_loop = setInterval(paint, frame);
-    }
+    toggleEscape()
   }
 });
+
+function toggleEscape()
+{
+  toggle = !toggle;
+  $('.esc-menu').fadeToggle(); // display menu on esc
+  if (toggle == true) {
+    clearInterval(game_loop)
+    $(".ganeshNumber").html(ganeshCount);
+    $(".roundnumber").html(round)
+  } else if (toggle == false)  {
+    game_loop = setInterval(paint, frame);
+  }
+}
 
 function roundEnd()
 {
@@ -168,7 +176,7 @@ function roundEnd()
   frameCount = 0
   spawnCount = 0
 
-  q = "WINNER"; // search query
+  q = "victory"; // search query
   
   request = new XMLHttpRequest;
   request.open('GET', 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag='+q, true);
@@ -182,6 +190,8 @@ function roundEnd()
     } else {
       console.log('reached giphy, but API returned an error');
      }
+
+    toggleEscape();
   };
  
   request.onerror = function() {

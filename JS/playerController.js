@@ -160,7 +160,7 @@ function moveLarry(larryObj)
   larryObj.xBottom += dx*movePerFrame
   larryObj.yBottom += dy*movePerFrame
 
-  if(checkHitboxes(larryObj))
+  if(checkHitboxes(larryObj) || larryObj.yLocation <= 210)
   {
     larryObj.xLocation -= dx*movePerFrame;
     larryObj.yLocation -= dy*movePerFrame;
