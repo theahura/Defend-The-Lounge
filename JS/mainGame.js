@@ -231,3 +231,11 @@ $('.lets-go').click(function() {
   $('.cover').fadeOut();
   init();
 });
+
+function gameOver()
+{
+  $(".health").html("0")
+
+  clearInterval(game_loop)
+  alert("Game Over")
+}

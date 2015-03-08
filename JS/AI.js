@@ -202,7 +202,7 @@ function checkGameOver()
 {
 	var ganeshCount = 0
 	console.log("HELLO")
-	
+
 	for(var i = 0; i < ganeshArray.length; i++)
 	{
 		if(!((ganeshArray[i].xLocation > larry.xBottom) 
@@ -216,10 +216,8 @@ function checkGameOver()
 
 		if (larry.health <= 0)
 		{
-			$(".health").html("0")
 
-			clearInterval(game_loop)
-			alert("Game Over")
+			gameOver()
 			return
 		}
 	}
