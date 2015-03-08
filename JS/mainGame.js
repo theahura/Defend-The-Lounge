@@ -168,6 +168,10 @@ function toggleEscape()
     if(round > localStorage.getItem("round"))
     {
       localStorage.setItem("round", round);
+    }
+
+    if(ganeshCount > localStorage.getItem("ganeshCount"))
+    {
       localStorage.setItem("ganeshCount", ganeshCount);
     }
 
@@ -234,6 +238,11 @@ $('.lets-go').click(function() {
 
 function gameOver()
 {
+  if(ganeshCount > localStorage.getItem("ganeshCount"))
+  {
+    localStorage.setItem("ganeshCount", ganeshCount);
+  }
+  
   $(".health").html("0")
 
   clearInterval(game_loop)
