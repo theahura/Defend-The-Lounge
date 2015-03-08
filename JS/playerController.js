@@ -91,6 +91,8 @@ function spawnLarry(x, y)
 }
 
 //needs to be modified
+var up, down, left, right 
+
 $(document).keydown(function(e){
   var key = e.which;
   if(key == "65") dx = -1; 
@@ -102,41 +104,63 @@ $(document).keydown(function(e){
   {
     e.preventDefault();
 
-    larry.direction = "W"
-    this.xBottom = this.xLocation + 40
-    this.yBottom = this.xLocation + 90
-    larry.punchCount = 3; 
-    checkDeadGanesh("W", larry)   
+    if(!left)
+    {
+      left = true
+
+      larry.direction = "W"
+      this.xBottom = this.xLocation + 40
+      this.yBottom = this.xLocation + 90
+      larry.punchCount = 3; 
+      checkDeadGanesh("W", larry) 
+    }
+  
   } 
   if(key == "38")
   {
     e.preventDefault();
 
-    larry.direction = "N"
-    this.xBottom = this.xLocation + 90
-    this.yBottom = this.xLocation + 40  
-    larry.punchCount = 3;
-    checkDeadGanesh("N", larry)    
+    if(!up)
+    {
+      up = true
+          
+      larry.direction = "N"
+      this.xBottom = this.xLocation + 90
+      this.yBottom = this.xLocation + 40  
+      larry.punchCount = 3;
+      checkDeadGanesh("N", larry)  
+    }
+      
   }
   if(key == "39") 
   {
     e.preventDefault();
 
-    larry.direction = "E"
-    this.xBottom = this.xLocation + 40    
-    this.yBottom = this.xLocation + 90
-    larry.punchCount = 3; 
-    checkDeadGanesh("E", larry)     
+    if(!right)
+    {
+      right = true
+
+      larry.direction = "E"
+      this.xBottom = this.xLocation + 40    
+      this.yBottom = this.xLocation + 90
+      larry.punchCount = 3; 
+      checkDeadGanesh("E", larry)    
+    }
   }
   if(key == "40")
   {
     e.preventDefault();
 
-    larry.direction = "S"
-    this.xBottom = this.xLocation + 90
-    this.yBottom = this.xLocation + 40 
-    larry.punchCount = 3;  
-    checkDeadGanesh("S", larry)   
+    if(!down)
+    {
+      down=true
+
+      larry.direction = "S"
+      this.xBottom = this.xLocation + 90
+      this.yBottom = this.xLocation + 40 
+      larry.punchCount = 3;  
+      checkDeadGanesh("S", larry) 
+    }
   }
 })
 
@@ -146,6 +170,11 @@ $(document).keyup(function(e){
   if(key == "87") dy = 0;
   if(key == "68") dx = 0;
   if(key == "83") dy = 0;
+
+  if(key == "40") down = false;
+  if(key == "39") right = false;
+  if (key == "38") up = false;
+  if (key == "38") left = false;
 })
 
 

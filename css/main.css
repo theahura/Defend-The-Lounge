@@ -41,3 +41,9 @@ img {
   background-color: rgba(200,200,200,.5);
   text-align: center;
 }
+
+.audioDiv
+{
+    display: table;
+    margin: 0 auto;
+}

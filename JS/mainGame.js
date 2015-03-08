@@ -145,6 +145,8 @@ function paint()
   moveLarry(larry)
   paintLarry(larry)
 
+  checkGameOver()
+
   //scroll if needed
   scrollPage(larry.xLocation, larry.yLocation)
 }
@@ -162,9 +164,16 @@ function toggleEscape()
   toggle = !toggle;
   $('.esc-menu').fadeToggle(); // display menu on esc
   if (toggle == true) {
+    if(round > localStorage.getItem("round"))
+    {
+      localStorage.setItem("round", round);
+      localStorage.setItem("ganeshCount", ganeshCount);
+    }
+
     clearInterval(game_loop)
     $(".ganeshNumber").html(ganeshCount);
     $(".roundnumber").html(round)
+    $(".highScore").html("Round: " + localStorage.getItem("round") + "</br> Ganesh Count: " + localStorage.getItem("ganeshCount"))
   } else if (toggle == false)  {
     game_loop = setInterval(paint, frame);
   }

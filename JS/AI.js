@@ -198,3 +198,26 @@ function resetGaneshes()
 		ganeshArray[i].isDead = false
 	}
 }
+
+
+function checkGameOver()
+{
+	var ganeshCount = 0
+
+	for(var i = 0; i < ganeshArray.length; i++)
+	{
+		if(!((ganeshArray[i].xLocation > larry.xBottom) 
+        ||  (ganeshArray[i].xBottom < larry.xLocation )
+        || (ganeshArray[i].yLocation > larry.yBottom)
+        || (ganeshArray[i].yBottom < larry.yLocation)))
+		{
+			ganeshCount++
+		}
+
+		if (ganeshCount >= 3)
+		{
+			clearInterval(game_loop)
+			alert("Game Over")
+		}
+	}
+}
