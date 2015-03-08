@@ -9,6 +9,12 @@ body {
 .no-close .ui-dialog-titlebar-close {
   display: none;
 }
+.intro-menu {
+  background-color: white;
+  margin: 4rem auto;
+  padding: 1.5rem;
+  width: 20rem;
+}
 .esc-menu {
   background-color: white;
   display: none;
@@ -18,17 +24,20 @@ body {
   left: 200px;
   z-index: 10;
 }
-.intro-menu {
-  background-color: white;
-  padding: 1.5rem;
-  width: 20rem;
-}
 .intro-menu img {
   display: block;
   max-width: 100%;
 }
-
-img
-{
-  display: none
+img {
+  display: none;
+}
+.cover {
+  position:fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(200,200,200,.5);
+  text-align: center;
 }
