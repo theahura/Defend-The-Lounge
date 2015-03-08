@@ -178,7 +178,7 @@ function toggleEscape()
     clearInterval(game_loop)
     $(".ganeshNumber").html(ganeshCount);
     $(".roundnumber").html(round)
-    $(".highScore").html("Round: " + localStorage.getItem("round") + "</br> Ganesh Count: " + localStorage.getItem("ganeshCount"))
+    $(".highScore").html("Rounds: " + localStorage.getItem("round") + "</br> Ganesh Count: " + localStorage.getItem("ganeshCount"))
   } else if (toggle == false)  {
     game_loop = setInterval(paint, frame);
   }
