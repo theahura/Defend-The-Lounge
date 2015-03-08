@@ -17,6 +17,8 @@ var cw = 10;
 //Array containing all of the hitboxes
 var hitBoxes = []
 
+var toggle
+
 //topx and topy are the topleft corner of the box
 //bottomx and bottomy are the bottomleft corner of the box
 function Hitbox(topX, topY, bottomX, bottomY)
@@ -127,7 +129,18 @@ $(document).keydown(function(e){
   var key = e.which;
   // press escape to menu
   if(key == "27") {
-    clearInterval(game_loop);
+    toggle = !toggle;
     $('.esc-menu').toggle(); // display menu on esc
+    if (toggle == true) {
+      clearInterval(game_loop)
+    } else if (toggle == false)  {
+      game_loop = setInterval(paint, frame);
+    }
   }
 });
+
+setInterval(function() {
+  if (on) {
+
+  }
+})
