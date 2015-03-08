@@ -21,6 +21,7 @@ function Larry(x, y)
   this.imgN = document.getElementById("larryN")
   this.imgW = document.getElementById("larryW")
   this.imgS = document.getElementById("larryS")
+  
   this.direction = "E"
 }
 
