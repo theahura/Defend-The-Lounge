@@ -142,13 +142,19 @@ function moveGanesh(ganeshObj)
 			ganeshObj.direction = "E"
 		else if (xMove < 0)
 			ganeshObj.direction = "W"
+
+      	ganeshObj.xBottom = ganeshObj.xLocation + 40    
+     	ganeshObj.yBottom = ganeshObj.yLocation + 90
 	}
 	else if(Math.abs(xMove) < Math.abs(yMove))
 	{
 		if(yMove > 0)
 			ganeshObj.direction = "S"
 		else if (yMove < 0)
-			ganeshObj.direction = "N"	
+			ganeshObj.direction = "N"
+
+      	ganeshObj.xBottom = ganeshObj.xLocation + 90    
+      	ganeshObj.yBottom = ganeshObj.yLocation + 40	
 	}
 	
 	//do movement here
@@ -201,10 +207,12 @@ function resetGaneshes()
 function checkGameOver()
 {
 	var ganeshCount = 0
-	console.log("HELLO")
 
 	for(var i = 0; i < ganeshArray.length; i++)
 	{
+		//console.log(ganeshArray[i].xLocation + " vs " + larry.xBottom + "||" + ganeshArray[i].xBottom + " vs " + larry.xLocation + "||" + ganeshArray[i].yLocation + " vs " + larry.yBottom + "||" + 
+	//		ganeshArray[i].yBottom + " vs " + larry.yLocation)
+
 		if(!((ganeshArray[i].xLocation > larry.xBottom) 
         ||  (ganeshArray[i].xBottom < larry.xLocation )
         || (ganeshArray[i].yLocation > larry.yBottom)
@@ -222,3 +230,4 @@ function checkGameOver()
 		}
 	}
 }
+

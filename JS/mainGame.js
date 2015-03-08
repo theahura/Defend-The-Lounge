@@ -37,10 +37,10 @@ function Hitbox(topX, topY, bottomX, bottomY)
   //assumes obj has: xLocation, yLocation, xBottom, yBottom
   this.isTouching= function(obj)
   {
-    if( (obj.xLocation >= this.topX && obj.xLocation <= this.bottomX && obj.yLocation >= this.topY && obj.yLocation <= this.bottomY) 
-      || (obj.xLocation >= this.topX && obj.xLocation <= this.bottomX && obj.yBottom >= this.topY && obj.yBottom <= this.bottomY)
-      || (obj.xBottom >= this.topX && obj.xBottom <= this.bottomX && obj.yLocation >= this.topY && obj.yLocation <= this.bottomY)
-      || (obj.xBottom >= this.topX && obj.xBottom <= this.bottomX && obj.yBottom >= this.topY && obj.yBottom <= this.bottomY) )
+    if(!(obj.xLocation > this.bottomX 
+      || obj.xBottom < this.topX
+      || obj.yLocation > this.bottomY
+      || obj.yBottom < this.topY))
     {
       // console.log(obj.xLocation + " " + obj.yLocation + " " + obj.xBottom + " " + obj.yBottom)
       return true

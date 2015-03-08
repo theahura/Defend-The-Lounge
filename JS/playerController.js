@@ -111,8 +111,8 @@ $(document).keydown(function(e){
       left = true
 
       larry.direction = "W"
-      this.xBottom = this.xLocation + 40
-      this.yBottom = this.xLocation + 90
+      larry.xBottom = larry.xLocation + 40
+      larry.yBottom = larry.yLocation + 90
       larry.punchCount = 3; 
       checkDeadGanesh("W", larry) 
     }
@@ -127,8 +127,8 @@ $(document).keydown(function(e){
       up = true
           
       larry.direction = "N"
-      this.xBottom = this.xLocation + 90
-      this.yBottom = this.xLocation + 40  
+      larry.xBottom = larry.xLocation + 90
+      larry.yBottom = larry.yLocation + 40  
       larry.punchCount = 3;
       checkDeadGanesh("N", larry)  
     }
@@ -143,8 +143,8 @@ $(document).keydown(function(e){
       right = true
 
       larry.direction = "E"
-      this.xBottom = this.xLocation + 40    
-      this.yBottom = this.xLocation + 90
+      larry.xBottom = larry.xLocation + 40    
+      larry.yBottom = larry.yLocation + 90
       larry.punchCount = 3; 
       checkDeadGanesh("E", larry)    
     }
@@ -158,8 +158,8 @@ $(document).keydown(function(e){
       down=true
 
       larry.direction = "S"
-      this.xBottom = this.xLocation + 90
-      this.yBottom = this.xLocation + 40 
+      larry.xBottom = larry.xLocation + 90
+      larry.yBottom = larry.yLocation + 40 
       larry.punchCount = 3;  
       checkDeadGanesh("S", larry) 
     }
