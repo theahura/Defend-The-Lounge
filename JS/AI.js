@@ -16,6 +16,9 @@ function Ganesh(x, y)
 	this.xLocation = x
 	this.yLocation = y
 
+	this.xBottom = this.xLocation
+	this.yBottom = this.yLocation
+
 	this.goalX = 1700
 	this.goalY = 50
 
@@ -49,7 +52,7 @@ function paintGanesh(ganeshObj)
 {
 	if (ganeshObj.isDead)
 	{
-		
+		ctx.drawImage(ganeshObj.imgDead, ganeshObj.xLocation, ganeshObj.yLocation)
 	}
 	else
 	{
@@ -146,11 +149,15 @@ function moveGanesh(ganeshObj)
 		 //do movement here
 		ganeshObj.xLocation += 15*(xMove)
 		ganeshObj.yLocation += 15*(yMove)
+		ganeshObj.xBottom += 15*(xMove)
+		ganeshObj.yBottom += 15*(yMove)
 
 		if(checkHitboxes(ganeshObj))
 		{
 		  ganeshObj.xLocation -= 15*(xMove)
 		  ganeshObj.yLocation -= 15*(yMove)
+		  ganeshObj.xBottom -= 15*(xMove)
+		  ganeshObj.yBottom -= 15*(yMove)
 		}
 	}
 }
