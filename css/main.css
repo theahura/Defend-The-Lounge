@@ -20,7 +20,7 @@ body {
   display: none;
   padding: 1.5rem;
   position: fixed;
-  top: 200px;
+  top: 100px;
   left: 200px;
   z-index: 10;
 }
@@ -51,6 +51,11 @@ img {
 .flexslider ul, ol {
   list-style-type: none;
 }
+.flexslider li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 .flex-viewport {
   width: 100%;
 }
@@ -70,6 +75,7 @@ img {
   float: right;
 }
 .lets-go {
+  cursor: pointer;
   margin: 0 auto;
 }
 
