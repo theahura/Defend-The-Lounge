@@ -258,6 +258,8 @@ function gameOver()
     if(key == "13") {
       init();
       location.reload();
+      round = 0;
+      ganeshCount = 0;
     }
   });
 
