@@ -70,5 +70,6 @@ img {
   float: right;
 }
 .lets-go {
+  cursor: pointer;
   margin: 0 auto;
 }
