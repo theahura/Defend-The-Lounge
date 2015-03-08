@@ -1,11 +1,13 @@
 var food = null
 
+var swordLeft, swordRight
+
 function Food()
 {
   this.xLocation = 245
   this.yLocation = 405
-  this.xBottom = 405
-  this.yBottom = 565
+  this.xBottom = 325
+  this.yBottom = 485
 
   this.health = 20
 

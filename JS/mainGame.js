@@ -1,7 +1,7 @@
 var game_loop
 
 //image vars
-var img = document.getElementById("background");
+var background = document.getElementById("background");
 
 //framerate
 var frame = 30
