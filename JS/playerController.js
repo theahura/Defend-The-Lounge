@@ -53,59 +53,63 @@ function spawnLarry(x, y)
 //needs to be modified
 $(document).keydown(function(e){
   var key = e.which;
-  if(key == "37") dx = -1; 
-  if(key == "38") dy = -1;
-  if(key == "39") dx = 1;
-  if(key == "40") dy = 1;
+  if(key == "65") dx = -1; 
+  if(key == "87") dy = -1;
+  if(key == "68") dx = 1;
+  if(key == "83") dy = 1;
+
+  if(key == "37") 
+  {
+    larry.direction = "W"
+    this.xBottom = this.xLocation + 40
+    this.yBottom = this.xLocation + 90    
+  } 
+  if(key == "38")
+  {
+    larry.direction = "N"
+    this.xBottom = this.xLocation + 90
+    this.yBottom = this.xLocation + 40  
+  }
+  if(key == "39") 
+  {
+    larry.direction = "E"
+    this.xBottom = this.xLocation + 40    
+    this.yBottom = this.xLocation + 90
+  }
+  if(key == "40")
+  {
+    larry.direction = "S"
+    this.xBottom = this.xLocation + 90
+    this.yBottom = this.xLocation + 40  
+  }
 })
 
 $(document).keyup(function(e){
   var key = e.which;
-  if(key == "37") dx = 0; 
-  if(key == "38") dy = 0;
-  if(key == "39") dx = 0;
-  if(key == "40") dy = 0;
+  if(key == "65") dx = 0; 
+  if(key == "87") dy = 0;
+  if(key == "68") dx = 0;
+  if(key == "83") dy = 0;
 })
+
 
 function moveLarry(larryObj)
 {
   if(larryObj.isDead)
     return
 
-  //rotations
-  if(dx > 0)
-  {
-    larryObj.direction = "E"
-    this.xBottom = this.xLocation + 40    
-    this.yBottom = this.xLocation + 90    
-  }
-  else if (dx < 0)
-  {
-    larryObj.direction = "W"
-    this.xBottom = this.xLocation + 40
-    this.yBottom = this.xLocation + 90    
-  }
-  else if (dy > 0)
-  {
-    larryObj.direction = "S"
-    this.xBottom = this.xLocation + 90
-    this.yBottom = this.xLocation + 40  
-  }
-  else if (dy < 0)
-  {
-    larryObj.direction = "N"
-    this.xBottom = this.xLocation + 90
-    this.yBottom = this.xLocation + 40  
-  }
-
   //do movement here
   larryObj.xLocation += dx*movePerFrame;
   larryObj.yLocation += dy*movePerFrame;
+  larryObj.xBottom += dx*movePerFrame
+  larryObj.yBottom += dy*movePerFrame
 
   if(checkHitboxes(larryObj))
   {
     larryObj.xLocation -= dx*movePerFrame;
     larryObj.yLocation -= dy*movePerFrame;
+    larryObj.xBottom -= dx*movePerFrame
+    larryObj.yBottom -= dy*movePerFrame
   }
 
 }
