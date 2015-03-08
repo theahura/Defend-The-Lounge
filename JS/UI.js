@@ -17,6 +17,10 @@ $(function() {
      hide: "puff",
      show : "slide",
      height: "auto",
-     modal: true,    
+     modal: true,
+     buttons: {
+        OK: function() {$(this).dialog("close");}
+     },
+     dialogClass: "no-close",    
   });
 });
