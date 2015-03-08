@@ -168,7 +168,7 @@ function roundEnd()
   frameCount = 0
   spawnCount = 0
 
-  q = "victory"; // search query
+  q = "WINNER"; // search query
   
   request = new XMLHttpRequest;
   request.open('GET', 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag='+q, true);
