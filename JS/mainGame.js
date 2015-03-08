@@ -128,6 +128,6 @@ $(document).keydown(function(e){
   // press escape to menu
   if(key == "27") {
     clearInterval(game_loop);
-    // $(document.body).toggleClass('.ex'); // display menu on esc
+    $(document.body).toggleClass('.esc-menu'); // display menu on esc
   }
 });

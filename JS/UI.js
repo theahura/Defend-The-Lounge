@@ -1,14 +1,15 @@
-// $(function() {
-//   $( "#esc-menu" ).dialog({
-//      autoOpen: false, 
-//      buttons: {
-//         OK: function() {$(this).dialog("close");}
-//      },
-//      close: function() {
-//             $('#esc-menu').toggle()
-//         },
-//   });
-// });
+$(function() {
+  $( ".esc-menu" ).dialog({
+     autoOpen: false, 
+     buttons: {
+        OK: function() {$(this).dialog("close");}
+     },
+     dialogClass: "no-close",
+  });
+  $( ".button" ).click(function() {
+     $( ".esc-menu" ).dialog( "open" );
+  });
+});
 
 $(function() {
   $( ".intro-menu" ).dialog({

@@ -6,6 +6,9 @@ body {
   background-color: white;
   padding: 1.5rem;
 }
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
 img {
   display: none;
 }
