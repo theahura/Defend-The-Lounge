@@ -18,7 +18,7 @@ function spawnFood()
 		return
 	else
 	{
-		if(Math.random() > .5)
+		if(Math.random() < .3)
 			food = new Food()
 	}
 }

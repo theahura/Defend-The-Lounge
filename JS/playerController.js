@@ -206,6 +206,11 @@ function moveLarry(larryObj)
   {
     larry.health += food.health
     removeFood()
+
+    if(larry.health > 100)
+      larry.health = 100
+    
+    $(".health").html(larry.health)
   }
 
   scrollBy(dx*movePerFrame, dy*movePerFrame)
