@@ -1,5 +1,5 @@
 body {
-  font-family: 'Cousine', monospace;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
 }
 .dialog {
@@ -9,6 +9,15 @@ body {
 .no-close .ui-dialog-titlebar-close {
   display: none;
 }
-img {
+.esc-menu {
+  background-color: white;
   display: none;
+  padding: 1.5rem;
+  position: fixed;
+  top: 200px;
+  left: 200px;
+  z-index: 10;
+}
+.intro-menu img {
+  max-width: 100%;
 }

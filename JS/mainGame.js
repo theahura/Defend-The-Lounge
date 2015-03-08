@@ -22,6 +22,7 @@ var hitBoxes = []
 
 var round = 1
 var spawnCount = 1
+var toggle = false
 
 //topx and topy are the topleft corner of the box
 //bottomx and bottomy are the bottomleft corner of the box
@@ -150,8 +151,13 @@ $(document).keydown(function(e){
   var key = e.which;
   // press escape to menu
   if(key == "27") {
-    clearInterval(game_loop);
-    $(document.body).toggleClass('.esc-menu'); // display menu on esc
+    toggle = !toggle;
+    $('.esc-menu').toggle(); // display menu on esc
+    if (toggle == true) {
+      clearInterval(game_loop)
+    } else if (toggle == false)  {
+      game_loop = setInterval(paint, frame);
+    }
   }
 });
 
