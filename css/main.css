@@ -18,7 +18,13 @@ body {
   left: 200px;
   z-index: 10;
 }
+.intro-menu {
+  background-color: white;
+  padding: 1.5rem;
+  width: 20rem;
+}
 .intro-menu img {
+  display: block;
   max-width: 100%;
 }
 
