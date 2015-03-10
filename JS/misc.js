@@ -4,8 +4,8 @@ var swordLeft, swordRight
 
 function Food()
 {
-  this.xLocation = 245
-  this.yLocation = 405
+  this.xLocation = 250
+  this.yLocation = 410
   this.xBottom = 325
   this.yBottom = 485
 
